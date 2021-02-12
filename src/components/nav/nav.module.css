@@ -1,0 +1,30 @@
+.nav {
+    grid-area: n;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+.list {
+    list-style: none;
+}
+.item {
+    margin-bottom: 6px;
+    padding: 5px 0;
+}
+.item a{
+    text-decoration: none;
+    color: #C0C0C0;
+    list-style: none;
+    font-weight: bold;
+    font-family: system-ui;
+    display: flex;
+}
+.item a.activeLink {
+    color: #000;
+}
+.item a:hover{
+    color: #eeeeee;
+}
+nav .item:hover {
+    transition: .7s;
+    background-color: cornflowerblue;
+}

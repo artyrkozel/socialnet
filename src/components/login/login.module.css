@@ -1,0 +1,10 @@
+.loginContainer {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+.loginForm h1 {
+    font-size: 27px;
+}

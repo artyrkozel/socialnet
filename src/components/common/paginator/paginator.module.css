@@ -1,0 +1,16 @@
+.selectedPage {
+    color: red;
+    cursor: pointer;
+    border: 1px solid red;
+}
+.pag {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.pageNumber {
+    padding: 3px;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-left: 5px;
+}

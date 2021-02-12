@@ -1,0 +1,19 @@
+.diologs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.diologsItems {
+    padding: 10px;
+}
+.diologsItems .active {
+    color: gold;
+}
+.diolog {
+
+}
+.massages {
+    padding: 10px;
+}
+.massages .massage{
+
+}
