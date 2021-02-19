@@ -1,11 +1,10 @@
 import axios from "axios";
-import {NewsItem} from "../components/news/News";
 
 
 const instance = axios.create({
     withCredentials: true,
     baseURL : 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"X-CMC_PRO_API_KEY" : "f241881c-1522-4b6d-a5a4-99a3960470cd"}
+    headers: {"API-KEY" : "f241881c-1522-4b6d-a5a4-99a3960470cd"}
 
 });
 
