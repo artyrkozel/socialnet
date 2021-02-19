@@ -1,10 +1,9 @@
 import {
     ActionsTypes,
     FollowType,
-    usersPageType,
-    UnFollowType, setUsersType, UserType, User2Type
-} from "./store";
+    UnFollowType, setUsersType, UserType} from "./store";
 import {usersAPI} from "../api/api";
+import {Dispatch} from "react";
 
 
 const FOLLOW = 'FOLLOW'
@@ -58,6 +57,7 @@ export const toggleFollowingInProgress = (isFetching: boolean) => {
         isFetching
     }
 }
+type DispatchType = Dispatch<ActionsTypes>
 
 let initialState = {
     users: [] as UserType[],

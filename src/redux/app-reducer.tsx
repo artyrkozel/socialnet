@@ -1,12 +1,8 @@
 import {ActionsTypes} from "./store";
-import {authAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
 import { getAutUserData } from "./auth-reducer";
 
 
 const INITIALIZED_SUCCESS= 'INITIALIZED-SUCCESS'
-
-
 
 
 let initialState = {
