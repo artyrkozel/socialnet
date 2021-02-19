@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/artyrkozel/socialnet/static/css/main.90268696.chunk.css",
-    "main.js": "/artyrkozel/socialnet/static/js/main.2953ab4c.chunk.js",
-    "main.js.map": "/artyrkozel/socialnet/static/js/main.2953ab4c.chunk.js.map",
-    "runtime-main.js": "/artyrkozel/socialnet/static/js/runtime-main.97d20dea.js",
-    "runtime-main.js.map": "/artyrkozel/socialnet/static/js/runtime-main.97d20dea.js.map",
-    "static/js/2.13a6564b.chunk.js": "/artyrkozel/socialnet/static/js/2.13a6564b.chunk.js",
-    "static/js/2.13a6564b.chunk.js.map": "/artyrkozel/socialnet/static/js/2.13a6564b.chunk.js.map",
-    "index.html": "/artyrkozel/socialnet/index.html",
-    "precache-manifest.df03a910009d33a052923a1ac5351352.js": "/artyrkozel/socialnet/precache-manifest.df03a910009d33a052923a1ac5351352.js",
-    "service-worker.js": "/artyrkozel/socialnet/service-worker.js",
-    "static/css/main.90268696.chunk.css.map": "/artyrkozel/socialnet/static/css/main.90268696.chunk.css.map",
-    "static/js/2.13a6564b.chunk.js.LICENSE.txt": "/artyrkozel/socialnet/static/js/2.13a6564b.chunk.js.LICENSE.txt",
-    "static/media/loader.gif": "/artyrkozel/socialnet/static/media/loader.bddb2c31.gif",
-    "static/media/logog.png": "/artyrkozel/socialnet/static/media/logog.0f30a30b.png",
-    "static/media/newsPhoto.jpg": "/artyrkozel/socialnet/static/media/newsPhoto.eee2f322.jpg",
-    "static/media/user.png": "/artyrkozel/socialnet/static/media/user.4713ef8c.png"
+    "main.css": "/socialnet/static/css/main.90268696.chunk.css",
+    "main.js": "/socialnet/static/js/main.430c9993.chunk.js",
+    "main.js.map": "/socialnet/static/js/main.430c9993.chunk.js.map",
+    "runtime-main.js": "/socialnet/static/js/runtime-main.b533f783.js",
+    "runtime-main.js.map": "/socialnet/static/js/runtime-main.b533f783.js.map",
+    "static/js/2.13a6564b.chunk.js": "/socialnet/static/js/2.13a6564b.chunk.js",
+    "static/js/2.13a6564b.chunk.js.map": "/socialnet/static/js/2.13a6564b.chunk.js.map",
+    "index.html": "/socialnet/index.html",
+    "precache-manifest.8100caac4adceb39f4f4ad5396800618.js": "/socialnet/precache-manifest.8100caac4adceb39f4f4ad5396800618.js",
+    "service-worker.js": "/socialnet/service-worker.js",
+    "static/css/main.90268696.chunk.css.map": "/socialnet/static/css/main.90268696.chunk.css.map",
+    "static/js/2.13a6564b.chunk.js.LICENSE.txt": "/socialnet/static/js/2.13a6564b.chunk.js.LICENSE.txt",
+    "static/media/loader.gif": "/socialnet/static/media/loader.bddb2c31.gif",
+    "static/media/logog.png": "/socialnet/static/media/logog.0f30a30b.png",
+    "static/media/newsPhoto.jpg": "/socialnet/static/media/newsPhoto.eee2f322.jpg",
+    "static/media/user.png": "/socialnet/static/media/user.4713ef8c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.97d20dea.js",
+    "static/js/runtime-main.b533f783.js",
     "static/js/2.13a6564b.chunk.js",
     "static/css/main.90268696.chunk.css",
-    "static/js/main.2953ab4c.chunk.js"
+    "static/js/main.430c9993.chunk.js"
   ]
 }
