@@ -7,7 +7,7 @@ export type ProfileType = {
     profile: any
     status: string
     updateStatus:(status: string) => void
-    isOwner: any
+    isOwner: boolean
     savePhoto: any
 }
 

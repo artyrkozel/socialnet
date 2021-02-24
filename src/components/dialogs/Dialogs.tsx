@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import c from './Diologs.module.css'
 import DiologItem from "./DiologItem/DiologItem";
 import Massage from "./Massage/Massage";

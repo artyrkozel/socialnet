@@ -6,6 +6,7 @@ type profileStatusType = {
     updateStatus: (status: string) => void
 }
 
+
 const ProfileStatusWithHooks = (props: profileStatusType) => {
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState<string>(props.status)
@@ -18,11 +19,9 @@ const ProfileStatusWithHooks = (props: profileStatusType) => {
         setEditMode(true)
     }
     const deactivateEditMode = (status: any) => {
-        debugger
         setEditMode(false)
         props.updateStatus(status)
     }
-
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
     }

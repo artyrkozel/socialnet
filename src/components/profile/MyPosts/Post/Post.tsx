@@ -1,12 +1,12 @@
 import React from "react";
 import c from './Post.module.css'
 import Preloader from "../../../Preloader";
-import {profileType} from "../../../../redux/store";
+import {ProfileType} from "../../../../redux/store";
 
 type MesegeType = {
-    messege: string
+    message: string
     likesCount: number
-    profile: profileType
+    profile: ProfileType
 }
 
 const Post: React.FC<MesegeType> = (props) => {
@@ -22,7 +22,7 @@ const Post: React.FC<MesegeType> = (props) => {
                 </div>
                 <div className={c.postBody}>
                     <div>
-                        {props.messege}
+                        {props.message}
                     </div>
                     <div>
                         {props.likesCount}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import s from './paginator.module.css'
 import cn from 'classnames';
-import Pagination from '@material-ui/lab/Pagination';
 type PropsType = {
     totalItemsCount: number
     pageSize: number
@@ -9,7 +8,7 @@ type PropsType = {
     onPageChanged: (pageNumber: number) => void
 }
 
-const Paginatori = (props: PropsType) => {
+const Paginator = (props: PropsType) => {
     let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize)
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -41,4 +40,4 @@ const Paginatori = (props: PropsType) => {
     )
 }
 
-export default Paginatori
+export default Paginator

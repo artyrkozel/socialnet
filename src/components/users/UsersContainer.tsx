@@ -22,7 +22,7 @@ type UsersType = {
     toggleIsFetching: (isFetching: boolean) => void
     followingInProgress: (followingInProgress : boolean) => void
     toggleFollowingInProgress: (isFetching: boolean) => void,
-    getUsers: (currentPage: any, pageSize: any) => void
+    getUsers: (currentPage: number, pageSize: number) => void
     unfollowThunk: (userId: number) => void
     followThunk: (userId: number) => void
 }
@@ -72,5 +72,5 @@ export default compose(
     connect(mapStateToProps, {follow, unfollow,
         setCurrentPage, toggleIsFetching,
         toggleFollowingInProgress, getUsers: requiredUsers, followThunk, unfollowThunk},
-    ))(UsersContainer)
+        ))(UsersContainer)
 

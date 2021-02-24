@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import {PhotosType, ProfileType, User2Type} from "../redux/store";
 
 const instance = axios.create({
     withCredentials: true,
@@ -8,17 +8,23 @@ const instance = axios.create({
 
 });
 
+type getItemsType = {
+    items: Array<User2Type>
+    totalCount: number
+    error: string | null
+}
 
 export const usersAPI = {
     getUsers(currentPage =1, pageSize =10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+        return instance.get<getItemsType>(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => { return  response.data})
     },
     follow(userID: number) {
-        return instance.post(`follow/${userID}`,)
+        return instance.post<ResponseType>(`follow/${userID}`,)
+            .then(res => res.data)
     },
     unfollow(userID: number){
-        return instance.delete(`/follow/${userID}`,)
+        return instance.delete(`/follow/${userID}`,).then(res => res.data) as Promise<ResponseType>
     },
     getProfile(userID: number){
         console.warn('Obsolete method. Please profileAPI object')
@@ -27,35 +33,59 @@ export const usersAPI = {
 
 }
 
+type SavePhotoResponseType = {
+    photos: PhotosType
+}
 
 export const profileAPI = {
     getProfile(userID: number){
-        return  instance.get(`profile/` + userID)
+        return  instance.get<ProfileType>(`profile/` + userID)
+            .then(res => res.data)
     },
     getStatus(userID: number){
-        return  instance.get(`profile/status/` + userID)
+        return  instance.get<string>(`profile/status/` + userID)
     },
     updateStatus(status: string){
-        return  instance.put(`profile/status`, {status: status})
+        return  instance.put<ResponseType>(`profile/status`, {status: status})
     },
-    savePhoto(photoFile:any){
+    savePhoto(photoFile: File){
         const formData = new FormData()
         formData.append('image', photoFile)
-        return instance.put('profile/photo', formData, {headers: {'Content-Type': 'multipart/form-data' }})
+        return instance.put<ResponseType<SavePhotoResponseType>>('profile/photo', formData, {headers: {'Content-Type': 'multipart/form-data' }})
     }
 
 }
+
+export enum ResultCodes {
+    Success = 0,
+    Error= 1
+}
+type ResponseType<D = {}> = {
+    data: D
+    messages: Array<string>
+    resultCode: number | ResultCodes
+}
+type MeResponseType = {
+        id: number
+        email: string
+        login: string
+}
+type LoginResponseType = {
+        userId: number
+}
+
 export const authAPI = {
     me(){
-        return  instance.get(`auth/me`)
+        return  instance.get<ResponseType<MeResponseType>>(`auth/me`).then(res => res.data)
     },
     login(email: string, password: string, rememberMe: boolean){
-        return  instance.post(`auth/login`, {email, password, rememberMe})
+        return  instance.post<ResponseType<LoginResponseType>>(`auth/login`, {email, password, rememberMe}).then(res => res.data)
     },
     logout(){
         return  instance.delete(`auth/login`)
     }
 }
+
 export const newsAPI = {
     setNews(){
         return axios.get('http://newsapi.org/v2/top-headlines?country=us&apiKey=3fd36eac8b36479bb017949defda9df3', {withCredentials: true})

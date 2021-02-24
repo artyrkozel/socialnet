@@ -4,16 +4,17 @@ import {NavLink} from "react-router-dom";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Button from '@material-ui/core/Button';
-import logog from './../../assets/images/logog.png'
+import logo from './../../assets/images/logog.png'
+import { HeaderPropsType } from './headerContainer';
 
-
-const Header = (props: any) => {
-
+const Header = (props: HeaderPropsType) => {
     return (
         <header className={c.header}>
-            <img src={logog}/>
+            <NavLink to="/profile"><img src={logo}/></NavLink>
             <div className={c.loginBlock}>
-                {props.isAuth ? <div>{props.login}  - <Button  onClick={props.logout} ><ExitToAppIcon/></Button ></div>  : <NavLink to={'/login'}><LockOpenIcon/></NavLink>}
+                {props.isAuth ?
+                    <div>{props.login}  - <Button  onClick={props.logout} ><ExitToAppIcon/></Button ></div> :
+                    <NavLink to={'/login'}><LockOpenIcon/></NavLink>}
             </div>
         </header>
     );

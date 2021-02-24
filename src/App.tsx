@@ -13,25 +13,30 @@ import Preloader from "./components/Preloader";
 import NewsContainer from './components/news/NewsContainer';
 import {AppRootStateType} from "./redux/redux-store";
 import ChatPage from "./pages/chat/ChatPage";
-import { withRouter } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
+
+
 class App extends React.Component<any, any> {
     componentDidMount() {
         this.props.initializeApp()
     }
+
     render() {
-        if(!this.props.initialized){return <Preloader/>}
+        if (!this.props.initialized) {
+            return <Preloader/>
+        }
         return (
             <div className="App">
                 <div className="app-wrapper">
                     <HeaderContainer/>
                     <Nav/>
                     <div className='app-wrapper-content'>
-                                <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                                <Route path='/diologs' render={() => <DiologsContainer/>}/>
-                                <Route path='/users' render={() => <UsersContainer/>}/>
-                                <Route path='/login' render={() => <Login/>}/>
-                                <Route path='/news' render={() => <NewsContainer/>}/>
-                                <Route path='/chat' render={() => <ChatPage/>}/>
+                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                        <Route path='/diologs' render={() => <DiologsContainer/>}/>
+                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='/news' render={() => <NewsContainer/>}/>
+                        <Route path='/chat' render={() => <ChatPage/>}/>
                     </div>
                 </div>
             </div>
@@ -39,6 +44,7 @@ class App extends React.Component<any, any> {
         );
     }
 }
+
 const mapStateToProps = (state: AppRootStateType) => ({
     initialized: state.app.initialized
 })

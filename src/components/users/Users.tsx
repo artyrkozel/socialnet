@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {User2Type} from "../../redux/store";
 import {NavLink} from "react-router-dom";
-import Paginator from "../common/paginator/Paginator";
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import Pagination from "@material-ui/lab/Pagination";
@@ -36,11 +35,15 @@ const useStyles = makeStyles({
     }
 });
 
+
 const Users = (props: PropsType) => {
     const classes = useStyles();
+    const onChangePage = (event: React.ChangeEvent<unknown>, page: number) => {
+        props.onPageChanged(page)
+    }
     return <div>
-        <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
-        {/*<Pagination page={props.currentPage} count={props.totalUsersCount} variant="outlined" shape="rounded" />*/}
+        {/*<Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>*/}
+        <Pagination page={props.currentPage} count={props.totalUsersCount} variant="outlined" shape="rounded" onChange={onChangePage}/>
             {
                 props.users.map(u =>
                     <div key={u.id} className={s.userBlock}>

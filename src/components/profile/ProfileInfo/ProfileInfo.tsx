@@ -4,14 +4,14 @@ import c from './ProfileInfo.module.css'
 import userPhoto from './../../../assets/images/user.png'
 import ProfileStatus from "./ProfileStatus";
 import UploadButtons from "./Artur";
-import {profileType} from "../../../redux/store";
+import {ProfileType} from "../../../redux/store";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 type ProfileInfoType = {
     savePhoto: (file : any) => void
     isOwner: boolean
-    profile: profileType
+    profile: ProfileType
     status: string
     updateStatus : (status: string) => void
 }
