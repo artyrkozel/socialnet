@@ -15,6 +15,7 @@
 .userPhoto {
     width: 200px;
     margin-top: 10px;
+    border-radius: 15px;
 }
 .infoPoint span {
     font-weight: bold;
@@ -26,14 +27,21 @@
     border-radius: 15px;
     min-width: 250px;
 }
-.lol {
+.editBtn{
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    background: transparent;
+    border: none;
+}
+.description {
     max-width: 350px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     border-radius: 15px;
     background-color: white;
-    margin-top: 20px;
     padding: 20px;
     text-align: left;
+    position: relative;
 }
 .name {
     font-weight: 700;
@@ -44,13 +52,4 @@
 .profileInfo {
     display: flex;
     justify-content: space-around;
-}
-.contacts {
-    max-width: 350px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    border-radius: 25px;
-    background-color: white;
-    margin-top: 20px;
-    padding: 30px;
-    text-align: left;
 }

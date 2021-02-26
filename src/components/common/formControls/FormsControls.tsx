@@ -1,6 +1,6 @@
 import React from "react";
 import s from './FormsControls.module.css'
-import {Checkbox, FormControlLabel, Grid, TextField} from "@material-ui/core";
+import {Checkbox, FormControlLabel, Input, TextField} from "@material-ui/core";
 // @ts-ignore
 export const Textarea = ({input, meta: {touched, error}, ...props}) => {
     const hasError = touched && error
@@ -18,12 +18,13 @@ export const Textarea = ({input, meta: {touched, error}, ...props}) => {
 }
 
 // @ts-ignore
-export const Input = ({input, meta, ...props}) => {
+export const renderInput = ({input, meta, ...props}) => {
     const hasError = meta.touched && meta.error
     return (
         <div className={hasError ? s.formControl : ''}>
             <div>
-                <TextField {...input} {...props}  id="standard-basic" label={props.label}/>
+                <Input {...input} {...props}  id="standard-basic" label={props.label}/>
+                {/*<TextField {...input} {...props}  id="standard-basic" label={props.label}/>*/}
             </div>
             <div>
                 {hasError && <span>{meta.error}</span>}

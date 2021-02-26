@@ -15,8 +15,8 @@ type getItemsType = {
 }
 
 export const usersAPI = {
-    getUsers(currentPage =1, pageSize =10) {
-        return instance.get<getItemsType>(`users?page=${currentPage}&count=${pageSize}`)
+    getUsers(currentPage =1, pageSize =10, term: string='') {
+        return instance.get<getItemsType>(`users?page=${currentPage}&count=${pageSize}&term=${term}`)
             .then(response => { return  response.data})
     },
     follow(userID: number) {
@@ -27,7 +27,6 @@ export const usersAPI = {
         return instance.delete(`/follow/${userID}`,).then(res => res.data) as Promise<ResponseType>
     },
     getProfile(userID: number){
-        console.warn('Obsolete method. Please profileAPI object')
         return  profileAPI.getProfile(userID)
     },
 
@@ -52,6 +51,9 @@ export const profileAPI = {
         const formData = new FormData()
         formData.append('image', photoFile)
         return instance.put<ResponseType<SavePhotoResponseType>>('profile/photo', formData, {headers: {'Content-Type': 'multipart/form-data' }})
+    },
+    saveProfile(profile: any){
+        return  instance.put<ResponseType>(`profile`, profile)
     }
 
 }

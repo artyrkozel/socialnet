@@ -39,7 +39,8 @@ export const getStatus = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getStatus(userId)
         dispatch(setStatus(response.data))
 }
-export const updateStatus = (status: string) => async (dispatch: any) => {
+export const updateStatus = (status: string) => async (dispatch: any, getState: any) => {
+    const userId = getState().auth.id
     let response = await profileAPI.updateStatus(status)
         if(response.data.resultCode === 0 ){
         dispatch(setStatus(status))
@@ -49,6 +50,13 @@ export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(file)
         if(response.data.resultCode === 0 ){
         dispatch(setPhotoSuccess(response.data.data.photos as PhotosType))
+    }
+}
+export const saveProfile = (profile: any) => async (dispatch: any, getState: any) => {
+    const userId = getState().auth.id
+    let response = await profileAPI.saveProfile(profile)
+    if(response.data.resultCode === 0 ){
+        dispatch(getUserProfile(userId))
     }
 }
 

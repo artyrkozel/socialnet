@@ -7,7 +7,7 @@ type profileStatusType = {
 }
 
 
-const ProfileStatusWithHooks = (props: profileStatusType) => {
+const ProfileStatusWithHooks = React.memo((props: profileStatusType) => {
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState<string>(props.status)
 
@@ -18,7 +18,7 @@ const ProfileStatusWithHooks = (props: profileStatusType) => {
     const activateEditMode = () => {
         setEditMode(true)
     }
-    const deactivateEditMode = (status: any) => {
+    const deactivateEditMode = () => {
         setEditMode(false)
         props.updateStatus(status)
     }
@@ -36,6 +36,6 @@ const ProfileStatusWithHooks = (props: profileStatusType) => {
             <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
         </div>}
     </div>
-}
+})
 
 export default ProfileStatusWithHooks

@@ -29,7 +29,7 @@ const News = (props: NewsType) => {
     return (
         //@ts-ignore
         <div>{props.news.news.map(u =>
-            <div className={c.newsItem}>
+            <div className={c.newsItem} key={u}>
                 <div className={c.heading}>{u.title}</div>
                 <div className={c.newsBlock}>
                     <img className={c.newsPhoto} src={u.urlToImage ? u.urlToImage : newsPhoto}/>

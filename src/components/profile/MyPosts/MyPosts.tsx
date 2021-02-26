@@ -24,7 +24,7 @@ const maxLength = maxLengthCreator(160)
 const MyPosts: React.FC<NewType> = (props) => {
     let postsElement = props.postsData
         .reverse()
-        .map(p => <Post message={p.message} likesCount={p.likesCount} profile={props.profile}/>)
+        .map((p,key) => <Post key={key} message={p.message} likesCount={p.likesCount} profile={props.profile}/>)
 
     let OnAddPost = (values: any) => {
             props.addPost(values.newPostText);

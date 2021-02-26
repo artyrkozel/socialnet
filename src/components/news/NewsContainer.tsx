@@ -3,6 +3,8 @@ import News from './News'
 import {connect} from "react-redux";
 import axios from "axios";
 import {SetNewsAC} from "../../redux/news-reducer";
+import {getIsFetching} from "../../redux/users-selectors";
+import Preloader from "../Preloader";
 
 class NewsContainer extends React.Component<any> {
     componentDidMount() {
@@ -11,11 +13,17 @@ class NewsContainer extends React.Component<any> {
         })
     }
     render() {
-        return <News news={this.props.news}/>
+        return (
+        <>
+            {this.props.isFetching ? <Preloader/> : null}
+            <News news={this.props.news}/>
+        </>
+        )
     }
 }
 let mapStateToProps = (state: any) => ({
-    news: state.news
+    news: state.news,
+    isFetching: getIsFetching(state),
 })
 
 export default connect(mapStateToProps,{SetNewsAC})(NewsContainer)

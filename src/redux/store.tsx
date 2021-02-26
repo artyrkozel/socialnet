@@ -104,6 +104,7 @@ export type FollowingInProgress = {
     type: 'TOGGLE_IS_FOLLOWING_PROGRESS',
     isFetching : boolean
 }
+
 export type StatusType = {
     type: 'SET-STATUS',
     status: string
@@ -130,11 +131,14 @@ export type setAuthUserDataType = {
     }
 
 }
-
+export type SetFilter = {
+    type: 'SET_FILTER'
+    payload: { term: string}
+}
 export type ActionsTypes = AddPostActionType | ChangeNewPostTextAction | ChangeMessageBody |
                             SendMessageType | FollowType | UnFollowType | setUsersType |
                             CurrentPageType | setTotalCountType | ToggleIsFetchingType | SetUserProfile |
-                            SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType
+                            SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType | SetFilter
 
 
 export type PhotosType = {

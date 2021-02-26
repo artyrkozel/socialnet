@@ -10,7 +10,7 @@ import { HeaderPropsType } from './headerContainer';
 const Header = (props: HeaderPropsType) => {
     return (
         <header className={c.header}>
-            <NavLink to="/profile"><img src={logo}/></NavLink>
+            <NavLink to="/profile"><img src={logo} alt={'logo'}/></NavLink>
             <div className={c.loginBlock}>
                 {props.isAuth ?
                     <div>{props.login}  - <Button  onClick={props.logout} ><ExitToAppIcon/></Button ></div> :

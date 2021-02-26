@@ -6,6 +6,9 @@ import {NavLink} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import Pagination from "@material-ui/lab/Pagination";
+import UsersSearchForm from "./UsersSearchForm";
+import {FilterType} from "../../redux/users-reducer";
+
 
 type PropsType = {
     totalUsersCount: number
@@ -19,6 +22,7 @@ type PropsType = {
     followingInProgress: any
     unfollowThunk: (userId: number) => void
     followThunk: (userId: number) => void
+    onFilterChanged: (filter: FilterType) => void
 }
 const useStyles = makeStyles({
     btn: {
@@ -43,6 +47,8 @@ const Users = (props: PropsType) => {
     }
     return <div>
         {/*<Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>*/}
+
+        <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
         <Pagination page={props.currentPage} count={props.totalUsersCount} variant="outlined" shape="rounded" onChange={onChangePage}/>
             {
                 props.users.map(u =>
@@ -73,4 +79,8 @@ const Users = (props: PropsType) => {
             }
     </div>
 }
+
+
+
+
 export default Users
