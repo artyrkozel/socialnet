@@ -5,16 +5,17 @@ import userPhoto from './../../../assets/images/user.png'
 import UploadButtons from "./Artur";
 import {ProfileType} from "../../../redux/store";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-import ProfileDataFormRedux from "./ProfileDataForm/ProfileDataForm";
+import ProfileDataFormRedux from "./ProfileDataForm/ProfileDataFormRedux";
+import ProfileData from "./ProfileData/ProfileData";
 
 
 type ProfileInfoType = {
     savePhoto: (file : File) => void
     isOwner: boolean
-    profile: ProfileType
+    profile: ProfileType | null
     status: string
     updateStatus : (status: string) => void
-    saveProfile: any
+    saveProfile: (profile: any) => void
 }
 type ContactType = {
     contactTitle: string
@@ -22,7 +23,7 @@ type ContactType = {
 }
 
 
-const ProfileInfo = (props: ProfileInfoType) => {
+const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
     let [editMode, setEditMode] = useState<boolean>(false)
     if (!props.profile) {
         return <Preloader/>
@@ -44,41 +45,11 @@ const ProfileInfo = (props: ProfileInfoType) => {
                     <div className={c.name}>{props.profile.fullName}</div>
                     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>
-                { editMode ? <ProfileDataFormRedux onSubmit={onSubmit}/> : <ProfileData profile={props.profile} isOwner={props.isOwner} toEditMode={toEditMode}/>}
+                { editMode ? <ProfileDataFormRedux initialValues={props.profile} profile={props.profile} toEditMode={toEditMode} onSubmit={onSubmit}/> : <ProfileData profile={props.profile} isOwner={props.isOwner} toEditMode={toEditMode}/>}
             </div>
         </div>
     )
 }
-
-const ProfileData = (props: any) => {
-    return (
-            <div className={c.description}>
-                {props.isOwner && <div><button className={c.editBtn} onClick={props.toEditMode}>Edit</button></div>}
-                <div className={c.name}>{props.profile.fullName}</div>
-                <div>
-                    <div><b>Locking for a job</b> : {props.profile.lookingForAJob ? "Yes" : "No"}</div>
-                </div>
-                <div><b>Mi skills</b> : <div>{props.profile.lookingForAJobDescription}</div></div>
-                <div>
-                    <div><b>About me : </b>{props.profile.aboutMe ? props.profile.aboutMe : "No data"}</div>
-                </div>
-                <div>
-                    <div><b>lookingForAJobDescription
-                        : </b>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : "No data"}
-                    </div>
-                </div>
-                <div className={c.contacts}>
-                    <p>Contacts :</p>{Object.keys(props.profile.contacts).map(key => {
-                            return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
-                        }
-                    )}
-                </div>
-            </div>
-    )
-}
-
-
-
 
 export const Contact = (props: ContactType) => {
     return (

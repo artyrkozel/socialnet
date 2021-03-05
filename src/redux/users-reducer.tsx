@@ -124,7 +124,7 @@ const usersReducer = (state: InitialType = initialState, action: ActionsTypes): 
 
 export type ThunkType = ThunkAction<Promise<void>, AppRootStateType, any, ActionsTypes>
 
-export const requiredUsers = (page: number, pageSize: number, term: string): ThunkType => {
+export const requestUsers = (page: number, pageSize: number, term: string): ThunkType => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         dispatch(setCurrentPage(page))

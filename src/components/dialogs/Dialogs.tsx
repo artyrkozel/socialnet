@@ -16,10 +16,9 @@ import {maxLengthCreator, required} from "../utils/validators/validator";
 
 }
 const maxLength = maxLengthCreator(100)
+
 const Dialogs:React.FC<dialogsType> = (props) => {
-
     let state = props.dialogs
-
     let dialogsElement = state.diologsData.map(d => <DiologItem name={d.name} key={d.id} id={d.id}/>);
     let messagesElement = state.massages.map(massage => <Massage massage={massage.massage} key={massage.id}/>);
 
@@ -50,7 +49,7 @@ const AddMessageForm = (props: any) => {
             <div>
                 <Field placeholder='enter your message' name={'newMassageBody'} component={Textarea} validate={[required,maxLength]}/>
             </div>
-            <div>
+            <div >
                 <button>send</button>
             </div>
         </form>

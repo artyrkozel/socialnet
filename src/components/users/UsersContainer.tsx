@@ -1,98 +1,22 @@
 import React from "react";
-import {connect} from "react-redux";
-import {
-    follow, setCurrentPage, unfollow,
-    toggleIsFetching, toggleFollowingInProgress,
-    requiredUsers, followThunk, unfollowThunk, FilterType
-} from "../../redux/users-reducer";
-import {User2Type} from "../../redux/store";
-import Users from "./Users";
+import {useSelector} from "react-redux";
 import Preloader from "../Preloader";
-import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {
-    getPageSize,
-    getUsers,
-    getTotalUsersCount,
-    getCurrentPage,
-    getIsFetching,
-    getFollowingInProgress,
-    getUsersFilter
-} from "../../redux/users-selectors";
-import {AppRootStateType} from "../../redux/redux-store";
+import {getIsFetching} from "../../redux/users-selectors";
+import { Users } from "./Users";
+type UsersPagePropsType = {
 
-type UsersType = {
-    users: Array<User2Type>
-    follow: (userID: number) => void
-    unfollow: (userID: number) => void
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    isFetching: boolean
-    toggleIsFetching: (isFetching: boolean) => void
-    followingInProgress: (followingInProgress: boolean) => void
-    toggleFollowingInProgress: (isFetching: boolean) => void,
-    getUsers: (currentPage: number, pageSize: number, term: string) => void
-    unfollowThunk: (userId: number) => void
-    followThunk: (userId: number) => void
-    filter: FilterType
+}
+
+export const UsersPage: React.FC<UsersPagePropsType> = (props) => {
+    const isFetching = useSelector(getIsFetching)
+    return (
+        <>
+            {isFetching ? <Preloader/> : null}
+            <Users/>
+        </>
+    )
 }
 
 
-class UsersContainer extends React.Component<UsersType> {
-    componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize, "")
-    }
 
-    onPageChanged = (pageNumber: number) => {
-        this.props.getUsers(pageNumber, this.props.pageSize, this.props.filter.term)
-    }
-
-    onFilterChanged = (filter: FilterType) => {
-        const {pageSize} = this.props
-        this.props.getUsers(1, pageSize, filter.term)
-    }
-
-    render() {
-        return (
-            <>
-                {this.props.isFetching ? <Preloader/> : null}
-                <Users totalUsersCount={this.props.totalUsersCount}
-                       pageSize={this.props.pageSize}
-                       currentPage={this.props.currentPage}
-                       onPageChanged={this.onPageChanged}
-                       onFilterChanged={this.onFilterChanged}
-                       users={this.props.users}
-                       follow={this.props.follow}
-                       unfollow={this.props.unfollow}
-                       toggleFollowingInProgress={this.props.toggleFollowingInProgress}
-                       followingInProgress={this.props.followingInProgress}
-                       unfollowThunk={this.props.unfollowThunk}
-                       followThunk={this.props.followThunk}
-                />
-            </>
-        )
-    }
-}
-
-let mapStateToProps = (state: AppRootStateType) => {
-    return {
-        users: getUsers(state),
-        pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
-        currentPage: getCurrentPage(state),
-        isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state),
-        filter: getUsersFilter(state)
-    }
-}
-
-export default compose(
-    withAuthRedirect,
-    connect(mapStateToProps, {
-            follow, unfollow,
-            setCurrentPage, toggleIsFetching,
-            toggleFollowingInProgress, getUsers: requiredUsers, followThunk, unfollowThunk
-        },
-    ))(UsersContainer)
 

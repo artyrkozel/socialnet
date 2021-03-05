@@ -2,6 +2,7 @@ import React from "react";
 import c from './Post.module.css'
 import Preloader from "../../../Preloader";
 import {ProfileType} from "../../../../redux/store";
+import {Avatar} from "@material-ui/core";
 
 type MesegeType = {
     message: string
@@ -17,11 +18,12 @@ const Post: React.FC<MesegeType> = (props) => {
         <div>
             <div className={c.item}>
                 <div className={c.dataUser}>
-                    <img src={props.profile.photos.small} alt=""/>
-                    <span>{props.profile.fullName}</span>
+                    <Avatar alt="Remy Sharp" src={props.profile.photos.small} />
+                    <div>{props.profile.fullName}</div>
                 </div>
                 <div className={c.postBody}>
                     <div>
+
                         {props.message}
                     </div>
                     <div>

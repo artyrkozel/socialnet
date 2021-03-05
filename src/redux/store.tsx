@@ -1,5 +1,3 @@
-import React from "react";
-
 export type PostsDataType = {
     id: number,
     messege: string,
@@ -18,12 +16,11 @@ export type profilePageType = {
     newPostText: string
 }
 export type UserType = {
+    name: string,
     id: number,
-    photoUrl: string
-    followed: boolean,
-    fullName: string,
+    photos: Photos,
     status: string,
-    location: locationType
+    followed: boolean
 }
 export type Photos = {
     small: string,
@@ -104,7 +101,6 @@ export type FollowingInProgress = {
     type: 'TOGGLE_IS_FOLLOWING_PROGRESS',
     isFetching : boolean
 }
-
 export type StatusType = {
     type: 'SET-STATUS',
     status: string
@@ -116,10 +112,6 @@ type Initialized = {
 export type SetPhoto = {
     type: 'SET-PHOTO-SUCCESS'
     photos: PhotosType
-}
-type SetNews = {
-    type: 'SET-NEWS'
-    news : any
 }
 export type setAuthUserDataType = {
     type: 'SET-USER-DATA'
@@ -138,7 +130,7 @@ export type SetFilter = {
 export type ActionsTypes = AddPostActionType | ChangeNewPostTextAction | ChangeMessageBody |
                             SendMessageType | FollowType | UnFollowType | setUsersType |
                             CurrentPageType | setTotalCountType | ToggleIsFetchingType | SetUserProfile |
-                            SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType | SetFilter
+                            SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType | SetFilter | GetPrices
 
 
 export type PhotosType = {
@@ -164,4 +156,13 @@ export type ProfileType = {
     userId: number
     contacts: contactsType
 
+}
+export type SetNews = {
+    type: 'SET-NEWS'
+    news: any
+}
+
+export type GetPrices = {
+    type: 'GET_PRICES'
+    prices: any
 }

@@ -1,6 +1,11 @@
+.newsWr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .newsItem {
     padding-bottom: 30px;
-    border-bottom: 1px solid black
 }
 .newsItem a {
     text-decoration: none;

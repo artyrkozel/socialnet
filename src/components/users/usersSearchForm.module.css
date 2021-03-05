@@ -1,0 +1,13 @@
+.form {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+button {
+    margin-left: 20px;
+}
+nav {
+    display: flex;
+    justify-content: center;
+}
+

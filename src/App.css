@@ -1,8 +1,11 @@
+.App{
+  min-height: 100vh;
+}
+
 .app-wrapper {
   width: 1200px;
-  margin: 20px auto;
+  margin: 0px auto;
   display: grid;
-  grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-template-areas:
           "h h"

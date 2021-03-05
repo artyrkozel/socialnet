@@ -2,9 +2,13 @@
     grid-area: n;
     padding-top: 10px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 .list {
     list-style: none;
+    padding: 0;
+    width: 100%;
 }
 .item {
     margin-bottom: 6px;
@@ -27,11 +31,13 @@
 .item a.activeLink {
     color: #000;
 }
-.item a:hover{
-    color: #eeeeee;
-}
 nav .item:hover {
     border-radius: 25px;
     transition: .7s;
-    background-color: cornflowerblue;
+    background-color: rgba(0, 0, 0, 0.08);
+
+}
+nav .item a:hover {
+    color: black;
+
 }

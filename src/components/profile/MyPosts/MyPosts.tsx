@@ -23,7 +23,6 @@ const maxLength = maxLengthCreator(160)
 
 const MyPosts: React.FC<NewType> = (props) => {
     let postsElement = props.postsData
-        .reverse()
         .map((p,key) => <Post key={key} message={p.message} likesCount={p.likesCount} profile={props.profile}/>)
 
     let OnAddPost = (values: any) => {
@@ -54,6 +53,7 @@ const AddNewPostForm = (props: any) => {
                 />
             </div>
             <Button
+                style={{marginTop: '15px'}}
                 type="submit"
                 variant="contained"
                 color="primary"

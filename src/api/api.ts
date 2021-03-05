@@ -8,6 +8,15 @@ const instance = axios.create({
 
 });
 
+const instanceL = axios.create({
+    withCredentials: true,
+    baseURL : 'https://coingecko.p.rapidapi.com/coins/markets',
+    params: {vs_currency: 'usd', page: '1', per_page: '100', order: 'market_cap_desc'},
+    headers: {"x-rapidapi-key" : "3fd36eac8b36479bb017949defda9df3", 'x-rapidapi-host': 'coingecko.p.rapidapi.com'}
+
+});
+
+
 type getItemsType = {
     items: Array<User2Type>
     totalCount: number
@@ -90,7 +99,9 @@ export const authAPI = {
 
 export const newsAPI = {
     setNews(){
-        return axios.get('http://newsapi.org/v2/top-headlines?country=us&apiKey=3fd36eac8b36479bb017949defda9df3', {withCredentials: true})
+        return axios.get('v2/top-headlines?country=us&apiKey=3fd36eac8b36479bb017949defda9df3', {withCredentials: true})
+    },
+    setValues(){
+      return axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false', )
     }
 }
-

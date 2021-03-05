@@ -1,9 +1,8 @@
 import {ErrorMessage, Field, Form, Formik, useFormik} from "formik";
 import React from "react";
 import {FilterType} from "../../redux/users-reducer";
-import {TextField} from "@material-ui/core";
-
-
+import {Button, TextField} from "@material-ui/core";
+import styles from './usersSearchForm.module.css'
 
 const usersFormValidate = (values: any) => {
     const errors = {};
@@ -13,13 +12,10 @@ type usersFormType = {
     onFilterChanged: (filter: FilterType) => void
 }
 const UsersSearchForm = React.memo((props: usersFormType) => {
-
     const submit = (values: FilterType, { setSubmitting } : {setSubmitting : (isSubmitting: boolean) => void}) => {
         props.onFilterChanged(values)
         setSubmitting(false)
     }
-
-
     return <div>
         <Formik
             initialValues={{ term: ''}}
@@ -27,13 +23,12 @@ const UsersSearchForm = React.memo((props: usersFormType) => {
             onSubmit={submit}
         >
             {({ isSubmitting }) => (
-                <Form style={{textAlign:'left'}}>
-                    {/*<TextField type="text" label="Filled" variant="filled" name='term' onChange={formik.handleChange}/>*/}
-                    <Field type="text" name="term"/>
-                    <ErrorMessage name="email" component="div" />
-                    <button type="submit" disabled={isSubmitting}>
-                        Submit
-                    </button>
+                <Form className={styles.form}>
+                    <Field type="text" name="term" as={TextField} label="Enter name"/>
+                    <ErrorMessage name="email" component={TextField} />
+                    <Button type="submit" disabled={isSubmitting}>
+                        Search
+                    </Button>
                 </Form>
             )}
         </Formik>

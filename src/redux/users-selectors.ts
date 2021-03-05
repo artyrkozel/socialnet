@@ -21,3 +21,6 @@ export const getFollowingInProgress = (state: AppRootStateType) => {
 export const getUsersFilter = (state: AppRootStateType) => {
     return  state.usersPage.filter
 }
+export const getPrices = (state: AppRootStateType) => {
+    return  state.prices.prices
+}

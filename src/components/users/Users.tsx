@@ -1,32 +1,29 @@
-import React from "react";
+import React, {useEffect} from "react";
 import s from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {User2Type} from "../../redux/store";
 import {NavLink} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import Pagination from "@material-ui/lab/Pagination";
 import UsersSearchForm from "./UsersSearchForm";
-import {FilterType} from "../../redux/users-reducer";
+import {FilterType, requestUsers, followThunk, unfollowThunk} from "../../redux/users-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers,
+    getUsersFilter
+} from "../../redux/users-selectors";
+import { requestPrices } from "../../redux/prices-reducer";
+import {Prices} from "../cryptoCurrency/Prices";
 
 
-type PropsType = {
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    onPageChanged: (pageNumber: number) => void
-    users: Array<User2Type>
-    follow: (userID: number) => void
-    unfollow: (userID: number) => void
-    toggleFollowingInProgress: (isFetching: boolean) => void
-    followingInProgress: any
-    unfollowThunk: (userId: number) => void
-    followThunk: (userId: number) => void
-    onFilterChanged: (filter: FilterType) => void
-}
+
 const useStyles = makeStyles({
     btn: {
-        background: 'linear-gradient(to right, #36D1DC 0%, #5B86E5  51%, #36D1DC  100%)',
+        background: 'linear-gradient( 112.7deg,  rgba(253,185,83,1) 11.4%, rgba(255,138,0,1) 70.2% );',
         border: 0,
         borderRadius: 3,
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -40,19 +37,41 @@ const useStyles = makeStyles({
 });
 
 
-const Users = (props: PropsType) => {
+export const Users = () => {
     const classes = useStyles();
-    const onChangePage = (event: React.ChangeEvent<unknown>, page: number) => {
-        props.onPageChanged(page)
-    }
-    return <div>
-        {/*<Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>*/}
+    const users = useSelector(getUsers)
+    const totalUsersCount = useSelector(getTotalUsersCount)
+    const currentPage = useSelector(getCurrentPage)
+    const pageSize = useSelector(getPageSize)
+    const filter = useSelector(getUsersFilter)
+    const followingInProgress = useSelector(getFollowingInProgress)
+    const dispatch = useDispatch()
 
-        <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
-        <Pagination page={props.currentPage} count={props.totalUsersCount} variant="outlined" shape="rounded" onChange={onChangePage}/>
-            {
-                props.users.map(u =>
-                    <div key={u.id} className={s.userBlock}>
+    useEffect(() => {
+        dispatch(requestUsers(currentPage, pageSize, ''))
+    }, [])
+
+    const follow = (userID: number) => {
+        dispatch(followThunk(userID))
+    }
+    const unfollow = (userID: number) => {
+        dispatch(unfollowThunk(userID))
+    }
+    const onChangePage = (event: React.ChangeEvent<unknown>, page: number) => {
+        dispatch(requestUsers(page, pageSize, filter.term))
+    }
+    const onFilterChanged = (filter: FilterType) => {
+        dispatch(requestUsers(1, pageSize, filter.term))
+    }
+
+
+    return <div>
+        <UsersSearchForm onFilterChanged={onFilterChanged}/>
+        <Pagination page={currentPage} count={totalUsersCount} variant="outlined" shape="rounded"
+                    onChange={onChangePage}/>
+        {
+            users.map(u =>
+                <div key={u.id} className={s.userBlock}>
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
@@ -61,26 +80,23 @@ const Users = (props: PropsType) => {
                         </div>
                         <div className={s.userClass}>
                             {u.followed
-                                ? <Button className={classes.btn} disabled={props.followingInProgress}
+                                ? <Button className={classes.btn} disabled={followingInProgress}
                                           onClick={() => {
-                                              props.unfollowThunk(u.id)
-                                          }}>UnFollow</Button > :
-                                <Button className={classes.btn} variant="contained" disabled={props.followingInProgress}
+                                              unfollow(u.id)
+                                          }}>UnFollow</Button> :
+                                <Button className={classes.btn} variant="contained" disabled={followingInProgress}
                                         onClick={() => {
-                                            props.followThunk(u.id)
-                                        }}>Follow</Button >}
+                                            follow(u.id)
+                                        }}>Follow</Button>}
                         </div>
                     </span>
-                        <span>
-                            <div className={classes.name}>{u.name}</div>
-                            <div>{u.status}</div>
-                        </span>
+                    <div>
+                        <div className={classes.name}>{u.name}</div>
+                    </div>
                 </div>)
-            }
+        }
     </div>
 }
 
 
 
-
-export default Users

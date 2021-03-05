@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
-
 let mapStateToProps = (state: AppRootStateType) => {
     return {
         dialogs: state.dialogs,

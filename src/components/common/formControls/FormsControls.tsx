@@ -18,8 +18,8 @@ export const Textarea = ({input, meta: {touched, error}, ...props}) => {
 }
 
 // @ts-ignore
-export const renderInput = ({input, meta, ...props}) => {
-    const hasError = meta.touched && meta.error
+export const renderInput = ({input, meta: {touched, error}, ...props}) => {
+    const hasError = touched && error
     return (
         <div className={hasError ? s.formControl : ''}>
             <div>
@@ -27,7 +27,7 @@ export const renderInput = ({input, meta, ...props}) => {
                 {/*<TextField {...input} {...props}  id="standard-basic" label={props.label}/>*/}
             </div>
             <div>
-                {hasError && <span>{meta.error}</span>}
+                {hasError && <span>{error}</span>}
             </div>
         </div>
 

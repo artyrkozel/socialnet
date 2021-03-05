@@ -7,7 +7,7 @@ import thunkMiddleware  from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
 import appReducer from "./app-reducer";
 import newsReducer from "./news-reducer";
-
+import pricesReducer from "./prices-reducer";
 let reducers = combineReducers({
         profile: profileReducer,
         dialogs:dialogsReducer,
@@ -15,7 +15,8 @@ let reducers = combineReducers({
         auth: authReducer,
         form: formReducer,
         app: appReducer,
-        news: newsReducer
+        news: newsReducer,
+        prices : pricesReducer
     }
 )
 

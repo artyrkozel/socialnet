@@ -6,19 +6,20 @@ import {
     getUserProfile,
     getStatus,
     updateStatus,
-    savePhoto, saveProfile,
+    savePhoto,
+    saveProfile,
+    ProfileReducerType,
 } from "../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
 import {RouteComponentProps} from "react-router";
 import {ProfileType} from "../../redux/store";
-
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {AppRootStateType} from "../../redux/redux-store";
 
 export type PostsDataType = {
     setUserProfile: (profile: ProfileType) => void
-    profile: ProfileType
+    profile: ProfileReducerType
     getUserProfile: (userID: number) => void
     isAuth: boolean,
     getStatus: (userID: number) => void

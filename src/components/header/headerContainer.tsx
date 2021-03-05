@@ -3,7 +3,6 @@ import Header from "./header";
 import {connect} from "react-redux";
 import {logout, setAuthUserData} from "../../redux/auth-reducer";
 import {AppRootStateType} from "../../redux/redux-store";
-import {ThunkType} from "../../redux/users-reducer";
 
 export type HeaderPropsType = {
     isAuth: boolean

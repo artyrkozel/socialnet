@@ -6,6 +6,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import PeopleIcon from '@material-ui/icons/People';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
+
 const Nav = () => {
     return (
         <nav className={c.nav}>
@@ -18,6 +19,7 @@ const Nav = () => {
                 <li className={c.item}><NavLink to="/chat" activeClassName={c.activeLink}><PlayCircleFilledIcon/>Chat</NavLink></li>
             </ul>
         </nav>
+
     );
 }
 

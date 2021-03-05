@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
         input: {
             display: 'none',
         },
+        icon: {
+            color: '#000'
+        }
     }),
 );
 
@@ -29,7 +32,7 @@ export default function UploadButtons(props: any) {
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onMainPhotoSelected}/>
             <label htmlFor="icon-button-file">
                 <IconButton color="primary" aria-label="upload picture" component="span">
-                    <PhotoCamera />
+                    <PhotoCamera className={classes.icon}/>
                 </IconButton>
             </label>
         </div>
