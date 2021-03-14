@@ -45,38 +45,35 @@ const useStyles = makeStyles({
 const News = (props: NewsItem2) => {
     const classes = useStyles();
     return (
-        <div>
-            <Prices />
-        </div>)
-//         <div className={c.newsWr}>
-//             {props.news.news.map(u =>
-//             <div key={u.url} className={c.newsItem}>
-//                 <Card className={classes.root}>
-//                     <CardActionArea>
-//                         <CardMedia
-//                             className={classes.media}
-//                             image={u.urlToImage ? u.urlToImage : newsPhoto}
-//                             title="Contemplative Reptile"
-//                         />
-//                         <CardContent>
-//                             <Typography gutterBottom variant="h6" component="h2">
-//                                 {u.title}
-//                             </Typography>
-//                             <Typography variant="body2" color="textSecondary" component="p">
-//                                 {u.description}
-//                             </Typography>
-//                         </CardContent>
-//                     </CardActionArea>
-//                     <CardActions>
-//                         <Button variant="contained" color="primary" href={u.url}>
-//                             Link
-//                         </Button>
-//
-//                     </CardActions>
-//                 </Card>
-//             </div>
-//         )}</div>
-// );
+        <div className={c.newsWr}>
+            {props.news.news.map(u =>
+            <div key={u.url} className={c.newsItem}>
+                <Card className={classes.root}>
+                    <CardActionArea>
+                        <CardMedia
+                            className={classes.media}
+                            image={u.urlToImage ? u.urlToImage : newsPhoto}
+                            title="Contemplative Reptile"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h6" component="h2">
+                                {u.title}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {u.description}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button variant="contained" color="primary" href={u.url}>
+                            Link
+                        </Button>
+
+                    </CardActions>
+                </Card>
+            </div>
+        )}</div>
+);
 }
 
 export default News;

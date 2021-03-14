@@ -1,9 +1,12 @@
-import {ActionsTypes, AddPostActionType, PhotosType, ProfileType, SetPhoto, SetUserProfile, StatusType} from "./store";
+import {ActionsTypes, AddPostActionType, PhotosType, ProfileType, SetPhoto, SetUserProfile, StatusType, DeletePostActionType} from "./store";
 import {profileAPI, usersAPI} from "../api/api";
 import {ThunkType} from "./users-reducer";
 import {stopSubmit} from "redux-form";
+import {v1} from "uuid";
+
 
 const ADD_POST = 'ADD-POST'
+const DELETE_POST = 'DELETE-POST'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
 const SET_PHOTO_SUCCESS = 'SET-PHOTO-SUCCESS'
@@ -13,6 +16,12 @@ export const addPostActionCreator = (newPostText: string):AddPostActionType  => 
     return {
         type: ADD_POST,
         newPostText
+    }
+}
+export const deletePostActionCreator = (id: string):DeletePostActionType  => {
+    return {
+        type: DELETE_POST,
+        id
     }
 }
 export const setUserProfile = (profile: ProfileType): SetUserProfile => {
@@ -67,8 +76,8 @@ export const saveProfile = (profile: ProfileReducerType): ThunkType => async (di
 
 let initialState = {
     postsData: [
-        {id: 1, message: "Hi, how are you", likesCount: 12},
-        {id: 2, message: "Hello, what is you name", likesCount: 10},
+        {id: v1(), message: "Hi, how are you", likesCount: 12},
+        {id: v1(), message: "Hello, what is you name", likesCount: 10},
     ],
     profile: null as ProfileType | null,
     status: '',
@@ -80,13 +89,19 @@ const profileReducer = ( state: ProfileReducerType = initialState, action: Actio
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
-                id: 5,
+                id: v1(),
                 message: action.newPostText,
                 likesCount: 0
             }
             return {
                 ...state,
                 postsData: [...state.postsData, newPost],
+            }
+        }
+        case DELETE_POST:{
+            return {
+                ...state,
+                postsData: [...state.postsData.filter(post => post.id !== action.id)]
             }
         }
         case SET_USER_PROFILE: {

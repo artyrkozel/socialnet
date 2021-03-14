@@ -13,11 +13,9 @@ import {GetPricesAC, requestPrices} from "../../redux/prices-reducer";
 class NewsContainer extends React.Component<any> {
     componentDidMount() {
         toggleIsFetching(true)
-        // axios.get('http://newsapi.org/v2/top-headlines?country=ru&apiKey=3fd36eac8b36479bb017949defda9df3').then(response => {
-        //     this.props.SetNewsAC(response.data.articles)
-        // })
-        //newsAPI.setValues()
-        requestPrices()
+        axios.get('http://newsapi.org/v2/top-headlines?country=ru&apiKey=3fd36eac8b36479bb017949defda9df3').then(response => {
+            this.props.SetNewsAC(response.data.articles)
+        })
         toggleIsFetching(false)
     }
     render() {

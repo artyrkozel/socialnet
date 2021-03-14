@@ -53,7 +53,7 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
 
 export const Contact = (props: ContactType) => {
     return (
-        <div><b>{props.contactTitle}</b> : {props.contactValue}</div>
+        <div className={c.Field}><b>{props.contactTitle}</b> : {props.contactValue}</div>
     )
 }
 

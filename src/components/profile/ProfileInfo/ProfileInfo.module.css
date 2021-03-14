@@ -55,11 +55,12 @@
 
 .Field{
     display: flex;
-    align-items: baseline;
+    align-items: flex-end;
 }
 .Field2{
     margin-top: 5px;
 }
-.contacts{
 
+.contacts b {
+    display: flex;
 }

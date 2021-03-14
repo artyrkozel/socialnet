@@ -6,7 +6,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import PeopleIcon from '@material-ui/icons/People';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
-
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 const Nav = () => {
     return (
         <nav className={c.nav}>
@@ -16,7 +16,7 @@ const Nav = () => {
                 <li className={c.item}><NavLink to="/users" activeClassName={c.activeLink}><PeopleIcon/>Users</NavLink></li>
                 <li className={c.item}><NavLink to="/news" activeClassName={c.activeLink}><AnnouncementIcon/>News</NavLink></li>
                 <li className={c.item}><NavLink to="/music" activeClassName={c.activeLink}><PlayCircleFilledIcon/>Music</NavLink></li>
-                <li className={c.item}><NavLink to="/chat" activeClassName={c.activeLink}><PlayCircleFilledIcon/>Chat</NavLink></li>
+                <li className={c.item}><NavLink to="/rates" activeClassName={c.activeLink}><TrendingUpIcon/>Rates</NavLink></li>
             </ul>
         </nav>
 

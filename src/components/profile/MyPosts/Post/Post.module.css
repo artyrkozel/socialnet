@@ -4,17 +4,31 @@
     padding: 15px;
     background-color: #FFA500;
     border-radius: 15px;
+    display: flex;
+}
+.topInfo {
+    display: flex;
+    justify-content: space-between;
+}
+.dataWrapper {
+    width: 100%;
 }
 .dataUser {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
 }
 .dataUser span {
     font-weight: bold;
 }
 
-.postBody {
+.bottomInfo {
     display: flex;
     justify-content: space-between;
-    margin-left: 50px;
+}
+.deleteBtn{
+    padding: 0;
+}
+.deleteBtn .MuiButton-text{
+    padding: 0;
+
 }

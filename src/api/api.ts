@@ -102,6 +102,6 @@ export const newsAPI = {
         return axios.get('v2/top-headlines?country=us&apiKey=3fd36eac8b36479bb017949defda9df3', {withCredentials: true})
     },
     setValues(){
-      return axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false', )
+      return axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true', )
     }
 }

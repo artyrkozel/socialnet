@@ -52,6 +52,10 @@ export type AddPostActionType = {
     type: 'ADD-POST',
     newPostText: string
 }
+export type DeletePostActionType = {
+    type: 'DELETE-POST',
+    id: string
+}
 export  type ChangeNewPostTextAction = {
     type: 'UPDATE-NEW-POST-TEXT',
     newText: string
@@ -130,7 +134,8 @@ export type SetFilter = {
 export type ActionsTypes = AddPostActionType | ChangeNewPostTextAction | ChangeMessageBody |
                             SendMessageType | FollowType | UnFollowType | setUsersType |
                             CurrentPageType | setTotalCountType | ToggleIsFetchingType | SetUserProfile |
-                            SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType | SetFilter | GetPrices
+                            SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType | SetFilter | GetPrices | DeletePostActionType
+
 
 
 export type PhotosType = {
@@ -164,5 +169,9 @@ export type SetNews = {
 
 export type GetPrices = {
     type: 'GET_PRICES'
+    prices: any
+}
+export type FilteredPrices = {
+    type: 'FILTERED'
     prices: any
 }

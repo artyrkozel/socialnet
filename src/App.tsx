@@ -14,6 +14,7 @@ import {AppRootStateType} from "./redux/redux-store";
 import ChatPage from "./pages/chat/ChatPage";
 import {withRouter} from 'react-router-dom'
 import {UsersPage} from "./components/users/UsersContainer";
+import {Prices} from "./components/cryptoCurrency/Prices";
 
 
 class App extends React.Component<any, any> {
@@ -32,10 +33,11 @@ class App extends React.Component<any, any> {
                     <div className='app-wrapper-content'>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/diologs' render={() => <DiologsContainer/>}/>
-                        <Route path='/users' render={() => <UsersPage/>}/>
+                        <Route exact path='/users' render={() => <UsersPage/>}/>
                         <Route path='/login' render={() => <Login/>}/>
                         <Route path='/news' render={() => <NewsContainer/>}/>
                         <Route path='/chat' render={() => <ChatPage/>}/>
+                        <Route path='/rates' render={() => <Prices />}/>
                     </div>
                 </div>
             </div>

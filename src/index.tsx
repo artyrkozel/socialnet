@@ -4,13 +4,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import ReactDOM from "react-dom";
 import store from './redux/redux-store'
-import {BrowserRouter, HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import { Provider } from 'react-redux';
 ReactDOM.render(
                 <Provider store={store}>
-                    <BrowserRouter>
+                    <HashRouter basename={process.env.PUBLIC_URL}>
                         <App />
-                    </BrowserRouter>
+                    </HashRouter>
                 </Provider>,
         document.getElementById('root')
     );

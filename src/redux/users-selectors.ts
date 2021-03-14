@@ -24,3 +24,4 @@ export const getUsersFilter = (state: AppRootStateType) => {
 export const getPrices = (state: AppRootStateType) => {
     return  state.prices.prices
 }
+

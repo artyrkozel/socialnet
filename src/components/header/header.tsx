@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
         },
         logo: {
-            width: 50
+            width: 140
         },
         container: {
             width: 1200,

@@ -6,6 +6,7 @@ import { required, maxLengthCreator } from "../../utils/validators/validator";
 import {Textarea} from "../../common/formControls/FormsControls";
 import {Button, Icon} from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
+import Preloader from "../../Preloader";
 
 type NewType = {
     postsData : Array<PostsDataType>
@@ -14,7 +15,7 @@ type NewType = {
     profile : any
 }
 export type PostsDataType = {
-    id: number,
+    id: string,
     message: string,
     likesCount: number
 }
@@ -22,8 +23,11 @@ export type PostsDataType = {
 const maxLength = maxLengthCreator(160)
 
 const MyPosts: React.FC<NewType> = (props) => {
+    if (!props.profile) {
+        return <Preloader/>
+    }
     let postsElement = props.postsData
-        .map((p,key) => <Post key={key} message={p.message} likesCount={p.likesCount} profile={props.profile}/>)
+        .map((p,key) => <Post key={key} id={p.id} message={p.message} likesCount={p.likesCount} profile={props.profile}/>)
 
     let OnAddPost = (values: any) => {
             props.addPost(values.newPostText);
