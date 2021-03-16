@@ -1,10 +1,15 @@
 
 .formControl span {
-    color: red;
+    color: crimson;
 }
 .formSummeryError {
     border: 1px solid red;
     padding: 5px;
     color: red
 }
-
+.error {
+    padding-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black
+}

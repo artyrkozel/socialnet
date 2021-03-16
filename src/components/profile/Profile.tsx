@@ -7,18 +7,18 @@ import {ProfileReducerType} from "../../redux/profile-reducer";
 export type ProfileType = {
     profile: ProfileReducerType
     status: string
-    updateStatus:(status: string) => void
+    updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (file: File) => void
-    saveProfile: (profile: any) => void
+    saveProfile: (profile: ProfileReducerType) => void
 }
 
 const Profile:React.FC<ProfileType> = React.memo((props) => {
     return (
-        <div>
+        <>
             <ProfileInfo savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.profile.profile} status={props.status} updateStatus={props.updateStatus} saveProfile={props.saveProfile}/>
-            <MyPostsContainer />
-        </div>
+            {props.isOwner === false ? '' : <MyPostsContainer /> }
+        </>
     );
 })
 

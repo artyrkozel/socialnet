@@ -4,7 +4,6 @@ import {
     UnFollowType, setUsersType, UserType, CurrentPageType, setTotalCountType, ToggleIsFetchingType, FollowingInProgress, SetFilter
 } from "./store";
 import {usersAPI} from "../api/api";
-import {Dispatch} from "redux";
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "./redux-store";
 

@@ -4,7 +4,6 @@ import { getAutUserData } from "./auth-reducer";
 
 const INITIALIZED_SUCCESS= 'INITIALIZED-SUCCESS'
 
-
 let initialState = {
     initialized: false
 }

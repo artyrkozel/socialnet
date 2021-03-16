@@ -4,6 +4,10 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 
+type UploadButtonsProps = {
+    savePhoto: (file: File) => void
+}
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
@@ -20,9 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function UploadButtons(props: any) {
+const UploadButtons: React.FC<UploadButtonsProps> = (props) => {
     const classes = useStyles();
-    const onMainPhotoSelected = (e:any) => {
+    const onMainPhotoSelected = (e:React.ChangeEvent<{ files: any }>) => {
         if(e.target.files.length){
             props.savePhoto(e.target.files[0])
         }
@@ -38,3 +42,5 @@ export default function UploadButtons(props: any) {
         </div>
     );
 }
+
+export default UploadButtons

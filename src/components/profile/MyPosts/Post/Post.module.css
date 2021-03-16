@@ -2,7 +2,7 @@
     margin-top: 20px;
     width: 600px;
     padding: 15px;
-    background-color: #FFA500;
+    background-color: #dfe3ee;
     border-radius: 15px;
     display: flex;
 }
@@ -12,6 +12,7 @@
 }
 .dataWrapper {
     width: 100%;
+    padding-left: 10px;
 }
 .dataUser {
     display: flex;
@@ -21,9 +22,12 @@
     font-weight: bold;
 }
 
-.bottomInfo {
+.message {
+    margin-top: 7px;
+}
+.likeCount {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 .deleteBtn{
     padding: 0;

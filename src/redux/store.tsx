@@ -1,3 +1,5 @@
+import {PricesType} from "./prices-reducer";
+
 export type PostsDataType = {
     id: number,
     messege: string,
@@ -135,6 +137,7 @@ export type ActionsTypes = AddPostActionType | ChangeNewPostTextAction | ChangeM
                             SendMessageType | FollowType | UnFollowType | setUsersType |
                             CurrentPageType | setTotalCountType | ToggleIsFetchingType | SetUserProfile |
                             SetUserData | FollowingInProgress | StatusType | Initialized | SetPhoto | SetNews | setAuthUserDataType | SetFilter | GetPrices | DeletePostActionType
+                            | FilterToUp
 
 
 
@@ -169,9 +172,13 @@ export type SetNews = {
 
 export type GetPrices = {
     type: 'GET_PRICES'
-    prices: any
+    prices: Array<PricesType>
+}
+export type FilterToUp = {
+    type: 'FILTER_TO_UP'
+    prices: Array<PricesType>
 }
 export type FilteredPrices = {
     type: 'FILTERED'
-    prices: any
+    prices: Array<PricesType>
 }

@@ -2,12 +2,11 @@
     width: 100%;
     height: 200px;
 }
-.descroptionBlock {
+.descriptionBlock {
     display: flex;
     text-align: center;
     min-width: 800px;
     border-radius: 15px;
-    background-color: white;
     padding: 20px;
     justify-content: space-around;
 }
@@ -25,6 +24,7 @@
     padding: 20px;
     border-radius: 15px;
     min-width: 250px;
+    background-color: white;
 }
 .editBtn{
     position: absolute;
@@ -56,11 +56,20 @@
 .Field{
     display: flex;
     align-items: flex-end;
-}
-.Field2{
     margin-top: 5px;
 }
-
+.Field b {
+    margin-right: 10px;
+}
+.Field2{
+    margin-top: 10px;
+}
 .contacts b {
     display: flex;
+    margin-right: 5px;
+
+}
+.contacts {
+    margin-top: 5px;
+
 }

@@ -24,4 +24,9 @@ export const getUsersFilter = (state: AppRootStateType) => {
 export const getPrices = (state: AppRootStateType) => {
     return  state.prices.prices
 }
-
+export const getIsAuth = (state: AppRootStateType) => {
+    return  state.auth.isAuth
+}
+export const getNews = (state: AppRootStateType) => {
+    return  state.news.news
+}

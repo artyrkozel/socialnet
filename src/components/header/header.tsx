@@ -12,12 +12,20 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        wrHeader: {
+            backgroundColor: '#7579ff',
+            '& .MuiButtonBase-root': {
+                color: '#f7f7f7'
+            },
+        },
         root: {
             display: 'flex',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
         },
+
         menuButton: {
             marginRight: theme.spacing(2),
+
         },
         title: {
             flexGrow: 1,
@@ -35,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Header: React.FC<HeaderPropsType> = (props) => {
     const classes = useStyles();
     return (
-        <AppBar position="static">
+        <AppBar position="static" className={classes.wrHeader}>
             <div className={classes.container}>
                 <Toolbar className={classes.root}>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -46,7 +54,6 @@ const Header: React.FC<HeaderPropsType> = (props) => {
                         <NavLink to={'/login'}><LockOpenIcon/></NavLink>}
                 </Toolbar>
             </div>
-
         </AppBar>
     );
 }

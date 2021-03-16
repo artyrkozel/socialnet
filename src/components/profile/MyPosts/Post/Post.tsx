@@ -5,15 +5,14 @@ import {Avatar, Button} from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import {useDispatch} from "react-redux";
 import {deletePostActionCreator} from "../../../../redux/profile-reducer";
-type MesegeType = {
+type MessageType = {
     id: string
     message: string
     likesCount: number
     profile: ProfileType
 }
 
-const Post: React.FC<MesegeType> = (props) => {
-
+const Post: React.FC<MessageType> = React.memo((props) => {
     const dispatch = useDispatch()
     const deleteMessage = () => {
         dispatch(deletePostActionCreator(props.id))
@@ -27,18 +26,20 @@ const Post: React.FC<MesegeType> = (props) => {
                 <div className={c.dataWrapper}>
                     <div className={c.topInfo}>
                         {props.profile.fullName}
-                        <Button onClick={deleteMessage}><DeleteIcon style={{width:'20px', height: '20px'}}/></Button>
+                        <Button onClick={deleteMessage} style={{padding: '0', margin: '0', minWidth: '20px'}}><DeleteIcon style={{width:'20px', height: '20px'}}/></Button>
                     </div>
-                    <div className={c.bottomInfo}>
-                        {props.message}
+                    <div className={c.message}>
                         <div>
-                            {props.likesCount}
+                            {props.message}
                         </div>
+                    </div>
+                    <div className={c.likeCount}>
+                        {props.likesCount}
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+})
 
 export default Post;

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
             marginBottom: '10px',
         },
         volumePlus: {
-            color: 'green',
+            backgroundColor: 'linear-gradient(rgb(2, 217, 52) 100%, rgba(222, 149, 0, 0) 100%)',
             fontSize: '16px',
         },
         volumeMinus: {
@@ -58,20 +58,14 @@ const useStyles = makeStyles((theme: Theme) =>
 const BiggestValues: React.FC<BiggestValuesType> = ({prices, ...props}) => {
     const classes = useStyles();
     const filteredArr = prices.slice().sort(function (a, b) {
-        if (Math.abs(a.market_cap_change_percentage_24h) > Math.abs(b.market_cap_change_percentage_24h)) {
-            return 1;
-        }
-        if (Math.abs(a.market_cap_change_percentage_24h) < Math.abs(b.market_cap_change_percentage_24h)) {
-            return -1;
-        }
-        return 0;
+        return (Math.abs(a.market_cap_change_percentage_24h) - Math.abs(b.market_cap_change_percentage_24h))
     })
     const topArr = filteredArr.slice(filteredArr.length - 4)
     return (
         <div className={classes.wrapper}>
             {topArr.map(el => {
                 return (
-                    <Card className={classes.root} key={el.id}>
+                    <Card className={classes.root} style={{background: el.price_change_percentage_24h > 0 ? 'linear-gradient(180deg, rgb(2, 217, 52) 0%, rgba(222,149,0,0) 100%)' : 'linear-gradient(180deg, rgba(217,20,2,1) 0%, rgba(222,149,0,0) 100%)'}} key={el.id}>
                         <CardContent>
                             <CardMedia
                                 className={classes.cryptoIcon}
@@ -88,10 +82,10 @@ const BiggestValues: React.FC<BiggestValuesType> = ({prices, ...props}) => {
                                 <div className={classes.wrapper}>
                                     <div className={classes.currentPrice}><AttachMoneyIcon/>{el.current_price}</div>
                                     {el.price_change_percentage_24h > 0 ?
-                                        <div className={classes.volumePlus}>
+                                        <div >
                                             {el.price_change_percentage_24h.toFixed(2)}%
                                         </div> :
-                                        <div className={classes.volumeMinus}>
+                                        <div >
                                             {el.price_change_percentage_24h.toFixed(2)}%
                                         </div>}
                                 </div>

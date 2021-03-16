@@ -1,15 +1,9 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {
-    setUserProfile,
-    getUserProfile,
-    getStatus,
-    updateStatus,
-    savePhoto,
-    saveProfile,
-    ProfileReducerType,
-} from "../../redux/profile-reducer";
+import {setUserProfile, getUserProfile, getStatus,
+        updateStatus, savePhoto, saveProfile,
+        ProfileReducerType,} from "../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
 import {RouteComponentProps} from "react-router";
 import {ProfileType} from "../../redux/store";
@@ -28,29 +22,30 @@ export type PostsDataType = {
     authUserID: number
     savePhoto: (file: File) => void
     avatar: File
-    saveProfile: (profile: any) => void
+    saveProfile: (profile: ProfileReducerType) => void
+}
+type MapStateToPropsType = {
+    profile: ProfileReducerType
+    status: string
+    authUserID: number | null
+    isAuth: boolean
 }
 
 class ProfileContainer extends React.Component<PostsDataType & RouteComponentProps<{ userId: string }>> {
     refreshProfile() {
         let userId = Number(this.props.match.params.userId)
-        if (!userId) {
-            userId = this.props.authUserID
-        }
+        if (!userId) {userId = this.props.authUserID}
         this.props.getUserProfile(userId)
         this.props.getStatus(userId)
     }
-
     componentDidMount() {
         this.refreshProfile()
     }
-
     componentDidUpdate(prevProps: Readonly<PostsDataType & RouteComponentProps<{ userId: string }>>, prevState: Readonly<{}>, snapshot?: any) {
-        if (this.props.match.params.userId != prevProps.match.params.userId) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.refreshProfile()
         }
     }
-
     render() {
         return <Profile
             profile={this.props.profile}
@@ -63,8 +58,7 @@ class ProfileContainer extends React.Component<PostsDataType & RouteComponentPro
 
     }
 }
-
-let mapStateToProps = (state: AppRootStateType) => ({
+let mapStateToProps = (state: AppRootStateType): MapStateToPropsType => ({
     profile: state.profile,
     status: state.profile.status,
     authUserID: state.auth.id,

@@ -2,7 +2,6 @@ import {ActionsTypes, SetNews} from "./store";
 import {NewsItem} from "../components/news/News";
 import {newsAPI} from "../api/api";
 import { ThunkType, toggleIsFetching} from "./users-reducer";
-
 const SET_NEWS= 'SET-NEWS'
 
 let initialState = {

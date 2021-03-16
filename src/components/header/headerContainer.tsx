@@ -9,6 +9,10 @@ export type HeaderPropsType = {
     login: string | null
     logout: any
 }
+type MapStateToPropsType = {
+    isAuth: boolean
+    login: string | null
+}
 
 class HeaderContainer extends React.Component<HeaderPropsType> {
     render() {
@@ -18,7 +22,7 @@ class HeaderContainer extends React.Component<HeaderPropsType> {
             />
     }
 }
-const mapStateToProps = (state: AppRootStateType) => ({
+const mapStateToProps = (state: AppRootStateType): MapStateToPropsType => ({
         isAuth: state.auth.isAuth,
         login: state.auth.login
 })

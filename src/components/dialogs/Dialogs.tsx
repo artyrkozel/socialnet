@@ -8,7 +8,7 @@ import { reduxForm, Field }  from "redux-form";
 import {Textarea} from "../common/formControls/FormsControls";
 import {maxLengthCreator, required} from "../utils/validators/validator";
 
- type dialogsType = {
+ type DialogsPropsType = {
      updateMessageBody: (body: string) => void
      sendMessage: (newMassageBody:string) => void
      dialogs: dialogsPageType
@@ -17,7 +17,7 @@ import {maxLengthCreator, required} from "../utils/validators/validator";
 }
 const maxLength = maxLengthCreator(100)
 
-const Dialogs:React.FC<dialogsType> = (props) => {
+const Dialogs:React.FC<DialogsPropsType> = (props) => {
     let state = props.dialogs
     let dialogsElement = state.diologsData.map(d => <DiologItem name={d.name} key={d.id} id={d.id}/>);
     let messagesElement = state.massages.map(massage => <Massage massage={massage.massage} key={massage.id}/>);

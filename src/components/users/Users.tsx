@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import s from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import Pagination from "@material-ui/lab/Pagination";
@@ -10,16 +10,13 @@ import {FilterType, requestUsers, followThunk, unfollowThunk} from "../../redux/
 import {useDispatch, useSelector} from "react-redux";
 import {
     getCurrentPage,
-    getFollowingInProgress,
+    getFollowingInProgress, getIsAuth, getIsFetching,
     getPageSize,
     getTotalUsersCount,
     getUsers,
     getUsersFilter
 } from "../../redux/users-selectors";
-import { requestPrices } from "../../redux/prices-reducer";
-import {Prices} from "../cryptoCurrency/Prices";
-
-
+import Preloader from "../common/Preloader/Preloader";
 
 const useStyles = makeStyles({
     btn: {
@@ -36,9 +33,11 @@ const useStyles = makeStyles({
     }
 });
 
-
 export const Users = () => {
+
     const classes = useStyles();
+    const isFetching = useSelector(getIsFetching)
+    const isAuth = useSelector(getIsAuth)
     const users = useSelector(getUsers)
     const totalUsersCount = useSelector(getTotalUsersCount)
     const currentPage = useSelector(getCurrentPage)
@@ -49,7 +48,7 @@ export const Users = () => {
 
     useEffect(() => {
         dispatch(requestUsers(currentPage, pageSize, ''))
-    }, [])
+    }, [dispatch,currentPage, pageSize])
 
     const follow = (userID: number) => {
         dispatch(followThunk(userID))
@@ -63,9 +62,9 @@ export const Users = () => {
     const onFilterChanged = (filter: FilterType) => {
         dispatch(requestUsers(1, pageSize, filter.term))
     }
-
-
-    return <div>
+    if(isAuth === false) return <Redirect to={'login'}/>
+    return <>
+        {isFetching ? <Preloader/> : null}
         <UsersSearchForm onFilterChanged={onFilterChanged}/>
         <Pagination page={currentPage} count={totalUsersCount} variant="outlined" shape="rounded"
                     onChange={onChangePage}/>
@@ -75,7 +74,7 @@ export const Users = () => {
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
-                            <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto}/>
+                            <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userPhoto} alt={''}/>
                             </NavLink>
                         </div>
                         <div className={s.userClass}>
@@ -95,7 +94,7 @@ export const Users = () => {
                     </div>
                 </div>)
         }
-    </div>
+    </>
 }
 
 

@@ -1,9 +1,9 @@
-import {ActionsTypes, GetPrices, FilteredPrices} from "./store";
+import {ActionsTypes, GetPrices, FilterToUp} from "./store";
 import {ThunkType, toggleIsFetching} from "./users-reducer";
 import {newsAPI} from "../api/api";
 
 const GET_PRICES= 'GET_PRICES'
-
+const FILTER_TO_UP = 'FILTER_TO_UP'
 
 export type PricesType = {
     ath: number
@@ -40,9 +40,16 @@ let initialState = {
 }
 export const GetPricesAC = (prices: Array<PricesType>): GetPrices => {
     return {
-        type: "GET_PRICES",
+        type: GET_PRICES,
         prices
-    }}
+    }
+}
+export const FilterToUpAC = (prices: Array<PricesType>): FilterToUp => {
+    return {
+        type: FILTER_TO_UP,
+        prices
+    }
+}
 
 type InitialType = typeof initialState
 
@@ -50,6 +57,11 @@ const appReducer = (state: InitialType = initialState, action: ActionsTypes): In
 
     switch (action.type) {
         case GET_PRICES:
+            return {
+                ...state,
+                prices: action.prices
+            }
+        case "FILTER_TO_UP":
             return {
                 ...state,
                 prices: action.prices
