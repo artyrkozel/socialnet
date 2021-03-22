@@ -4,7 +4,7 @@ import {PhotosType, ProfileType, User2Type} from "../redux/store";
 const instance = axios.create({
     withCredentials: true,
     baseURL : 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY" : "f241881c-1522-4b6d-a5a4-99a3960470cd"}
+    headers: {"API-KEY" : "e24193c6-db40-4e93-ac6a-c1798a7670fd"}
 
 });
 
