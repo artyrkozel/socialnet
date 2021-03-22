@@ -87,11 +87,11 @@ export const authAPI = {
         return  instance.delete(`auth/login`)
     }
 }
-const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+
 export const newsAPI = {
 
     setNews(){
-        return axios.get(`${proxyUrl}https://newsapi.org/v2https://newsapi.org/v2/top-headlines?country=us&apiKey=3fd36eac8b36479bb017949defda9df3`)
+        return axios.get(`https://cors-anywhere.herokuapp.com/https://newsapi.org/v2https://newsapi.org/v2/top-headlines?country=us&apiKey=3fd36eac8b36479bb017949defda9df3`, {headers: {"Access-Control-Allow-Origin": "*"}})
     },
     setValues(){
       return axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true', )
