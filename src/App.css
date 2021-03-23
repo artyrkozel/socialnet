@@ -3,8 +3,8 @@
  background-image: url("./assets/images/bg-01.jpg");
   content: "";
   display: block;
-  position: absolute;
-  z-index: -1;
+  position: relative;
+  z-index: 4;
   width: 100%;
   top: 0;
   left: 0;

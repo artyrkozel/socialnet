@@ -11,6 +11,7 @@ import TablePrices from "./tablePrices/TablePrices";
 import Preloader from "../common/Preloader/Preloader";
 
 export const Prices =() => {
+
     const dispatch = useDispatch()
     const prices = useSelector(getPrices)
     const isAuth = useSelector(getIsAuth)
@@ -19,6 +20,43 @@ export const Prices =() => {
             dispatch(requestPrices())
     },[dispatch])
     const useStyles = makeStyles({
+        table: {
+            minWidth: 700,
+        },
+        wrTable: {
+            marginTop: '60px',
+        },
+        volumePlus: {
+            color: 'green'
+        },
+        volumeMinus: {
+            color: 'red'
+        },
+        rowStyles: {
+            display: 'flex',
+            alignItems: 'center'
+        },
+        cryptoName: {
+            margin: '0 12px',
+            color: '#626973',
+            fontWeight: 'bold'
+        },
+        avatar: {
+            width: '20px',
+            height: '20px'
+        },
+        hover: {
+            '&:hover': {
+                transition: '.6s',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 4px 10px 3px rgb(0 0 0 / 8%)',
+                cursor: 'pointer'
+            }
+        },
+        symbol: {
+            textTransform: 'uppercase',
+            opacity: '.5'
+        },
         mainTitle: {
             fontSize: '24px',
             color: '#000',

@@ -114,9 +114,7 @@ const TablePrices = (props: TablePricesType) => {
     })
     const filteredToDown = filteredToPercentage.slice().reverse()
     const filteredRankDown = filteredToRank.slice().reverse()
-    return (
-        <>
-            <TableContainer component={Paper} className={classes.wrTable}>
+    return ( <TableContainer component={Paper} className={classes.wrTable}>
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
                         <TableRow>
@@ -152,7 +150,6 @@ const TablePrices = (props: TablePricesType) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </>
     )
 }
 
