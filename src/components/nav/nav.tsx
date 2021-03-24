@@ -11,10 +11,10 @@ const Nav = () => {
         <nav className={c.nav}>
             <ul className={c.list}>
                 <li className={c.item}><NavLink to="/profile" activeClassName={c.activeLink}><AccountBoxIcon/>Profile</NavLink></li>
-                <li className={c.item}><NavLink to="/diologs" activeClassName={c.activeLink}><EmailIcon/>Messages</NavLink></li>
+                <li className={c.item}><NavLink to="/chat" activeClassName={c.activeLink}><EmailIcon/>Chat</NavLink></li>
                 <li className={c.item}><NavLink to="/users" activeClassName={c.activeLink}><PeopleIcon/>Users</NavLink></li>
                 <li className={c.item}><NavLink to="/news" activeClassName={c.activeLink}><AnnouncementIcon/>News</NavLink></li>
-                <li className={c.item}><NavLink to="/rates" activeClassName={c.activeLink}><TrendingUpIcon/>Rates</NavLink></li>
+                <li className={c.item}><NavLink to="/rates" activeClassName={c.activeLink}><TrendingUpIcon/>Currencies</NavLink></li>
             </ul>
         </nav>
 

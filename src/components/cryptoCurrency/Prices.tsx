@@ -7,7 +7,7 @@ import BiggestValues from "./biggestValues/BiggestValues";
 import {Typography} from "@material-ui/core";
 import Exchange from "./Exchange/Exchange";
 import {Redirect} from "react-router-dom";
-import TablePrices from "./tablePrices/TablePrices";
+import TablePrices from "./TablePrices/TablePrices";
 import Preloader from "../common/Preloader/Preloader";
 
 export const Prices =() => {

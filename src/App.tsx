@@ -14,6 +14,7 @@ import {withRouter} from 'react-router-dom'
 import {Prices} from "./components/cryptoCurrency/Prices";
 import NewsContainer from "./components/news/NewsContainer";
 import { Users } from './components/users/Users';
+import { ChatPage } from './components/pages/Chat/ChatPage';
 
 class App extends React.Component<any, any> {
     componentDidMount() {
@@ -30,11 +31,11 @@ class App extends React.Component<any, any> {
                     <Nav/>
                     <div className='app-wrapper-content'>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/diologs' render={() => <DiologsContainer/>}/>
                         <Route exact path='/users' render={() => <Users/>}/>
                         <Route path='/login' render={() => <Login/>}/>
                         <Route path='/news' render={() => <NewsContainer />}/>
                         <Route path='/rates' render={() => <Prices />}/>
+                        <Route path='/chat' render={() => <ChatPage />}/>
                     </div>
                 </div>
             </div>

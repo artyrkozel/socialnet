@@ -41,6 +41,7 @@ const useStyles = makeStyles({
     },
     wrTable: {
         marginTop: '60px',
+        marginBottom: '50px'
     },
     volumePlus: {
         color: 'green'

@@ -20,13 +20,8 @@ import Preloader from "../common/Preloader/Preloader";
 
 const useStyles = makeStyles({
     btn: {
-        background: 'linear-gradient( 112.7deg,  rgba(253,185,83,1) 11.4%, rgba(255,138,0,1) 70.2% );',
-        border: 0,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
-        height: 35,
-        padding: '0 20',
+        background: '#3f51b5',
+        color: '#fff'
     },
     name: {
         fontSize: '19px',
