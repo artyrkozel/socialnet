@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { Route } from "react-router-dom";
 import Nav from './components/nav/nav'
-import DiologsContainer from "./components/dialogs/DiologsContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from './components/header/headerContainer';
 import Login from "./components/login/Login";

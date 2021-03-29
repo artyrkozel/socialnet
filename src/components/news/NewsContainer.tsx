@@ -1,7 +1,6 @@
 import React from 'react';
 import News from './News'
 import {connect} from "react-redux";
-import axios from "axios";
 import {requestNews, SetNewsAC} from "../../redux/news-reducer";
 import {getIsFetching, getIsAuth} from "../../redux/users-selectors";
 import {AppRootStateType} from "../../redux/redux-store";

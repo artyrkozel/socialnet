@@ -4,7 +4,7 @@ import {PhotosType, ProfileType, User2Type} from "../redux/store";
 const instance = axios.create({
     withCredentials: true,
     baseURL : 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY" : "e24193c6-db40-4e93-ac6a-c1798a7670fd"}
+    headers: {"API-KEY" : "c7bbacee-9383-4bb5-9da6-5eaa531e6320"}
 
 });
 
@@ -92,7 +92,6 @@ export const newsAPI = {
 
     setNews(){
         return axios.get(`https://newsapi.org/v2/top-headlines?country=ru&apiKey=3fd36eac8b36479bb017949defda9df3`,
-            // {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", }}
         )
     },
     setValues(){

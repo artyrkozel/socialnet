@@ -20,6 +20,7 @@ const useStyles = makeStyles({
         },
     },
     loginForm: {
+        marginTop: '10px',
         textAlign: 'left',
         background: '-webkit-linear-gradient(top, #7579ff, #b224ef)',
         padding: '55px 55px 37px 55px',
@@ -75,7 +76,11 @@ const useStyles = makeStyles({
     loginFormBtn: {
         display: 'flex',
         justifyContent: 'center',
+    },
+    loginTitle: {
+        textAlign: 'center'
     }
+
 });
 const maxLength = maxLengthCreator(20)
 type LoginFormPropsType = {}
@@ -85,6 +90,15 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormDataType, LoginFormPropsTyp
     return (
         <div className={classes.loginContainer}>
             <div>
+                <div className={classes.loginTitle}>
+                    <p>Use common test account credentials:</p>
+                    <div>
+                        <b> Email: free@samuraijs.com</b>
+                    </div>
+                    <div>
+                        <b>Password: free</b>
+                    </div>
+                </div>
                 <form className={classes.loginForm} onSubmit={props.handleSubmit}>
                     <span className={classes.formTitle}>Log in</span>
                     <Field placeholder={'Email'}  name={'email'} component={PassInput}
